@@ -10,6 +10,4 @@ Router.use('/api',homeRouter)
 Router.use('/api/itineraries/',itineraryRouter)
 Router.use('/api/users/', userRouter)
 
-
-
 module.exports = Router;

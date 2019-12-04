@@ -9,34 +9,53 @@ class HomeContainer extends Component {
 
     this.state = {
       data: [],
-      randomNum: []
+      randomNums: []
     };
-    this.randomNum = this.randomNum.bind(this);
+    this.randomNums = this.randomNums.bind(this);
   }
+  
   async UNSAFE_componentWillMount() {
     await this.props.getAllCities();
     this.setState({
       data: this.props.ciudades.citiesReducer.citiesArray
     });
-    await this.randomNum();
+    await this.randomNums(12);
   }
 
-  randomNum() {
+  getRandomCities(numOfGroups){
+    var arr = [];
+    var temparray = [];
+    var i,j;
+    var groupLength;
+
+    this.state.randomNums.forEach((i) => {
+      arr.push(this.state.data.ciudadesFromRoutes[i]);
+    });
+
+    groupLength = Math.floor(arr.length / numOfGroups);
+    for (i = 0, j = arr.length; i < j; i += groupLength) {
+      temparray.push(arr.slice(i,i+groupLength));
+    }
+    
+    return temparray;
+  }
+
+  randomNums(arraySize) {
     let arr = [];
-    for (let i = 0; i < 12; ) {
+    for (let i = 0; i < arraySize; ) {
       let r = Math.floor(Math.random() * 31);
       if (arr.indexOf(r) === -1) {
         arr.push(r);
         i++;
       }
     }
-    this.setState({ randomNum: arr });
+    this.setState({ randomNums: arr });
   }
 
   render() {
     return (
       <div>
-        <HomeComponent cities={this.state.data} nums={this.state.randomNum} />
+        <HomeComponent cities={this.getRandomCities(3)} nums={this.state.randomNums} />
       </div>
     );
   }

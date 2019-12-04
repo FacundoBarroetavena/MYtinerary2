@@ -10,17 +10,14 @@ router.get('/', async (req, res) => {
     res.json({ ciudadesFromRoutes })
 });
 
-
 router.get('/:id', async (req, res) => {
     var singleCityFromRoutes = await City.find({ "title": req.params.id }, function (err, singleCity) {
         if (err) return console.error(err);
-        console.log("Printing singleCity");
     })
     res.json({ singleCityFromRoutes })
 });
 
-
-router.post('/addcity', async function (req, res) {
+router.route('/addcity').post( async function (req, res) {
     try {
         const city = new City(req.body);
         await city.save();
@@ -29,7 +26,5 @@ router.post('/addcity', async function (req, res) {
         res.send(e);
     }
 });
-
-
 
 module.exports = router;

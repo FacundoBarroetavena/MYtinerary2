@@ -7,7 +7,6 @@ const fetchSingleCity = (city) => {
     }
 };
 
-
 export const getTheSingleCity = (city_name) => dispatch => {
     return fetch(`/api/cities/${city_name}`, { method: 'GET' })
     .then(response => response.json())

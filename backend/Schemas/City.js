@@ -7,7 +7,6 @@ var citySchema = new mongoose.Schema({
     title: String
   });
   
-  console.log("Soy City.js")
   var City = mongoose.model('City', citySchema);
   
   // var newCity = new City({ name: 'AAAKOAKAOKAKOA', country: 'JAKSJDAKSD' });

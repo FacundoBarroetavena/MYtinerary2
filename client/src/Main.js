@@ -5,7 +5,7 @@ import HomeContainer from './containers/HomeContainer/HomeContainer';
 import FooterComponent from './components/FooterComponent/FooterComponent';
 import ProfileAndHamburguerContainer from './containers/ProfileAndHamburguerContainer/ProfileAndHamburguerContainer';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import LoginComponent from './components/LoginComponent/LoginComponent'
+import LoginContainer from './containers/LoginContainer/LoginContainer'
 import CityContainer from './containers/CityContainer/CityContainer';
 import SearchCitiesContainer from './containers/SearchCitiesContainer/SearchCitiesContainer';
 import AddCityComponent from './components/AddCityComponent/AddCityComponent'
@@ -25,7 +25,7 @@ class Main extends React.Component {
           <Route component={NavbarComponent} />
           <Switch>
             <Route path='/index' component={HomeContainer} />
-            <Route path='/login' component={LoginComponent} />
+            <Route path='/login' component={LoginContainer} />
             <Route path='/create-account' component={CreateAccountContainer} />
             <Route path='/cities/:id' component={CityContainer} />
             <Route path='/search' component={SearchCitiesContainer} />
